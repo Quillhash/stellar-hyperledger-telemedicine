@@ -1,0 +1,35 @@
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+    background:dodgerblue;
+    color: black;
+    font-family:-apple-system
+  }
+  .sidebar-header{
+      align-content: space-around;
+      padding: 30px
+      
+
+  }
+
+  .list-style{
+      font-size: 20px;
+      list-style-type: none;
+      
+
+  }
+  li{
+      background-color: skyblue;
+      margin-top:10px;
+      align-self: auto;
+      margin-left: 0
+     
+  }
+  li:hover{
+      background-color: blue;
+      color:black;
+  }
+  
+  
+  

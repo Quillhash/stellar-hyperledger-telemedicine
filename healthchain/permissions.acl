@@ -1,0 +1,46 @@
+
+rule NetworkControlPermission {
+  description: "allow network admin all access to system resources"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.*"
+  action: ALLOW
+}
+rule ParticipantNetworkControlPermission {
+  description: "allow network admin all access to system resources"
+  participant: "org.mpr.healthchain.participant.Patient"
+  operation: READ
+  resource: "org.hyperledger.composer.system.Network#healthchain@0.0.3"
+  action: ALLOW
+}
+rule ParticipantRegistryControlPermission {
+  description: "allow network admin all access to system resources"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.mpr.healthchain.participant.*"
+  action: ALLOW
+}
+
+rule MedicalRecordPermission {
+
+  description: "Only granted practitioner can update medical records of pateint"
+  participant(p): "org.mpr.healthchain.participant.Practitioner"
+  operation: ALL
+  resource(r): "org.mpr.healthchain.participant.Patient"
+  transaction: "org.mpr.healthchain.personalDetails.updateRecord"
+  condition: (r.authPractitioners && r.authPractitioners.indexOf(p.practitionerKey>-1))
+  action: ALLOW
+
+}
+
+
+
+rule PatientAccessPractitionerProfile {
+  description: "Patients can access practitioner public profile"
+  participant: "org.mpr.healthchain.participant.Patient"
+  operation: READ
+  resource: "org.mpr.healthchain.personalDetails.PractitionerDetails"
+  action: ALLOW
+}
+
+

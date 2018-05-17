@@ -1,0 +1,64 @@
+namespace org.mpr.healthchain.personalDetails 
+import  org.mpr.healthchain.participant.Patient
+import  org.mpr.healthchain.participant.Practitioner
+
+
+abstract asset BasicDetails identified by id {
+  o String id
+  o String firstname
+  o String lastname
+  o String email
+  o String dob
+
+  
+}
+
+asset PatientDetails extends BasicDetails {
+  
+  --> Patient patient
+  
+}
+
+asset  PractitionerDetails extends BasicDetails{
+ 
+  --> Practitioner practitioner
+  
+  
+}
+
+asset MedicalRecord identified by recordId {
+  o String recordId //128 bit uuid
+  --> Patient owner
+  --> Practitioner author
+  o String hashPointer
+  o Integer version 
+}
+
+
+transaction updateRecord {
+  --> Patient patient
+  --> MedicalRecord medicalRecord
+}
+
+transaction authorizePractitioner {
+  --> Patient patient
+  o String practitionerId
+}
+
+transaction revokePractitioner {
+  --> Patient patient
+  o String practitionerId
+}
+
+event recordUpdated {
+  o String patientId
+  o String practitionerId
+}
+event practitionerAuthorized{
+  o String patientId
+  o String practitionerId
+}
+event practitionerRevoked {
+  o String patientId
+  o String practitionerId
+}

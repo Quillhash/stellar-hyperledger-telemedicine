@@ -1,0 +1,17 @@
+namespace org.mpr.healthchain.participant
+import org.mpr.healthchain.personalDetails.PatientDetails
+import org.mpr.healthchain.personalDetails.PractitionerDetails
+import org.mpr.healthchain.personalDetails.MedicalRecord
+
+participant Patient identified by patientKey {
+  o String patientKey //128 bit uuid
+  o String[] authPractitioners
+  o MedicalRecord[] records optional
+
+}
+
+participant Practitioner identified by practitionerKey {
+  o String practitionerKey //128 bit uuid
+  o String[] patients
+  
+}

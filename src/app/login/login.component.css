@@ -1,0 +1,38 @@
+.wrapper {
+    opacity: 0.6;
+    display: flex;
+    align-items: stretch;
+   
+    background-color: DodgerBlue;
+    justify-content: center;
+    align-items: center;
+    height:100vh
+
+}
+.inner-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color:skyblue;
+    height: 350px;
+    width: 350px;
+
+}
+h2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
+.doctor{
+    border-radius: 0%;
+    margin: 10px
+    
+   
+}
+.patient{
+
+    border-radius: 0%;
+   
+
+}
