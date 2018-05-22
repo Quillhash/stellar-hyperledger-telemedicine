@@ -1,0 +1,117 @@
+<div>
+   <div class="account">
+      <button type="button" class="btn btn-primary" [disabled]="loading" (click)="createAccount()">create account</button>
+      <div class="text-center" *ngIf = "loading">
+        <p class="lead" >Creating your account hold on....</p>
+      </div>
+      
+   </div> 
+
+   
+
+    <div class="card" *ngFor="let account of accounts.slice().reverse()">
+      
+
+        <div class="card-header">
+            <div class="header-heading">
+                <h2>{{account.name}}</h2>
+                <h3>Public Key:-{{account.publicKey}}</h3>
+    
+              </div>
+              <div class="controls">
+                  <button type="button" class="btn btn-primary btn-lg escrow" data-target="#myEscrowModal" data-toggle="modal">Create Escrow</button>
+                  <button type="button" class="btn btn-primary btn-lg transfer" data-target="#myModal" data-toggle="modal">Transfer</button>
+              </div>
+        </div>
+        <div class="card-body">
+            <h4>Balance:-{{account.balance}}</h4>
+            <h4>Secret Key:{{account.secret}}</h4>
+            <h6>Please note down your secret key in a safe place,It will not be visible once browser history is cleaned up</h6>
+        
+        </div>
+        
+      </div>
+
+        <!-- Modal for transfer stellar-->
+  <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Tranfer Stellar</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+           
+          </div>
+          <div class="modal-body">
+              <form  #f="ngForm" (ngSubmit)="transferStellar(f)" ngNativeValidate>
+                  <label for="receiverId" >Receiver public key</label>
+                  <input class="form-control"  type="text" ngModel name="receiverId" required/>
+                
+                  <label for="amount">Amount</label>
+                  <input class="form-control" required type="text" ngModel name="amount"/>
+                  <label for="sourceSecret">Source Secret</label>
+                  <input  class="form-control" required type="password" ngModel name="sourceSecret"/>
+                  <hr>
+                  <input type="submit"  [disabled]="transfering" class="btn btn-default" value="Send Stellar"/>
+
+
+
+    
+                </form>
+            
+          </div>
+          <div class="modal-footer">
+              <h3 *ngIf="transfering">Hold on transfering stellar</h3>
+              <button type="button" class="btn btn-default" [disabled]="transfering" data-dismiss="modal">Close</button>
+            </div>
+          
+         
+        </div>
+        
+      </div>
+    </div>
+
+
+    <!-- Modal for transfer stellar-->
+
+    <div class="modal fade" id="myEscrowModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Create Escrow</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+             
+            </div>
+            <div class="modal-body">
+                <form  #es="ngForm" (ngSubmit)="createEscrow(es)" ngNativeValidate>
+                    <label for="receiverId" >Service Receiver key (Patient's Key)</label>
+                    <input class="form-control"  type="text" ngModel name="receiverId" required/>
+                  
+                    <label for="providerId">Service Provider Key (Doctor's Key)</label>
+                    <input class="form-control" required type="text" ngModel name="providerId"/>
+                    <label for="sourceSecret">Escrow Creater Secret</label>
+                    <input  class="form-control" required type="password" ngModel name="sourceSecret"/>
+                    <hr>
+                    <input type="submit"  [disabled]="escrow" class="btn btn-default" value="Create Escrow"/>
+  
+  
+  
+      
+                  </form>
+              
+            </div>
+            <div class="modal-footer">
+                <h3 *ngIf="escrow">Hold On Creating escrow</h3>
+                <button type="button" class="btn btn-default" [disabled]="escrow" data-dismiss="modal">Close</button>
+              </div>
+            
+           
+          </div>
+          
+        </div>
+      </div>
+
+</div>

@@ -1,0 +1,24 @@
+.account {
+display: flex;
+flex-direction: column;
+margin-top: 5px;
+justify-content: flex-end;
+}
+.card {
+    margin-top:20px;
+
+}
+.controls{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+   
+}
+
+.escrow{
+    margin-right: 5px;
+    border-radius: 0%;
+}
+.transfer{
+    border-radius: 0%;
+}

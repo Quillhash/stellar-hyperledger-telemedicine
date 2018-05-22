@@ -17,6 +17,6 @@ app.get('/',(req,res)=>{
 })
 
 
-app.listen(4200,"0.0.0.0",()=>{
+app.listen(4200,()=>{
     console.log("listening");
 })

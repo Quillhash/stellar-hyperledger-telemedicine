@@ -1,11 +1,25 @@
-<div class="wrapper">
+<div class="row">
+    <div class="col-md-2 col-sm-4">
+        <div class="wrapper">
 
-    <!-- Sidebar -->
-   <app-patient-navigation></app-patient-navigation>
-  
-    <!-- Page Content -->
-    <div id="content">
-        <!-- We'll fill this with dummy content -->
+            <app-patient-navigation (onNavSelected)="onSelected($event)"></app-patient-navigation>
+           
+
+        </div>
+    
     </div>
-  
-  </div>
+    
+    <div class="col-md-10 col-sm-8">
+        <div id="content">
+           
+
+            <app-payment *ngIf="payment==true"></app-payment>
+            <app-checkups *ngIf="checkups==true"></app-checkups>
+
+            <!-- todo :similary do for other nav options content -->
+            
+            
+        </div>
+    </div>
+   
+</div>
