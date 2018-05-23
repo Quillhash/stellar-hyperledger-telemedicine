@@ -10,10 +10,6 @@
   "license": "2",
   "devDependencies": {
     "chai": "latest",
-    "composer-admin": "^0.19.5",
-    "composer-client": "^0.19.5",
-    "composer-common": "^0.19.5",
-    "composer-connector-embedded": "latest",
     "eslint": "latest",
     "istanbul": "latest",
     "mkdirp": "latest",
@@ -22,6 +18,7 @@
   "dependencies": {
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "express-fileupload": "^0.4.0"
+    "express-fileupload": "^0.4.0",
+    "socket.io": "^2.1.1"
   }
 }

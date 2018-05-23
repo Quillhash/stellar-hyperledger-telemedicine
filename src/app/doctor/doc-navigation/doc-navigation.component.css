@@ -1,7 +1,8 @@
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+   
+    position: fixed;
     min-height: 100vh;
+
     background:dodgerblue;
     color: black;
     font-family:-apple-system

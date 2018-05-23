@@ -1,11 +1,28 @@
-<div class="wrapper">
+=
 
-  <!-- Sidebar -->
- <app-doc-navigation></app-doc-navigation>
+<div class="row">
+    <div class="col-md-2 col-sm-4">
+        <div class="wrapper">
 
-  <!-- Page Content -->
-  <div id="content">
-      <!-- We'll fill this with dummy content -->
-  </div>
+            <app-doc-navigation></app-doc-navigation>
 
+           
+
+        </div>
+    
+    </div>
+    
+    <div class="col-md-10 col-sm-8">
+        <div id="content">
+           
+     <router-outlet></router-outlet>
+            
+          
+
+            <!-- todo :similary do for other nav options content -->
+            
+            
+        </div>
+    </div>
+   
 </div>

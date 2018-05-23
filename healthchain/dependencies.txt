@@ -1,0 +1,4 @@
+ "composer-admin": "^0.19.5",
+    "composer-client": "^0.19.5",
+    "composer-common": "^0.19.5",
+    "composer-connector-embedded": "latest",
