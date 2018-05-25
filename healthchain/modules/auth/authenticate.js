@@ -3,7 +3,7 @@ var myNetwork = require('./myNetwork');
 var router = express.Router();
 var fs = require('fs');
 
-var card = fs.readFileSync('/home/himanshu/HealthChain/healthchain/patient1.card');
+var card = fs.readFileSync('/home/himanshu/healthchain/healthchain/admin@healthchain.card');
 
 router.post('/login',(req,res)=>{
     
@@ -25,5 +25,6 @@ router.post('/login',(req,res)=>{
 
 
 })
+
 
 module.exports = router;
