@@ -1,4 +1,7 @@
-import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, OnDestroy, ViewChild } from '@angular/core';
+
+
+
 
 @Component({
   selector: 'app-appointments',
@@ -6,17 +9,18 @@ import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/cor
   styleUrls: ['./appointments.component.css']
 })
 export class AppointmentsComponent implements OnInit,OnDestroy {
-  online:boolean =false;
+ 
   constructor() { }
 
   ngOnInit() {
+    
   }
 
-  goOnline()
-  {
-    this.online = true;
-  }
-  ngOnDestroy(){
+
+  
+
+
+ngOnDestroy(){
     
   }
 
