@@ -1,15 +1,30 @@
 <div class="row">
 
-    <div class="checkup">
+    <div class="video">
         
         <li>
           <a role="button" routerLink="/doctor/appointments/init" (click)="goOnline()">
-            Go online</a></li>
+            Go online</a>
+           
+            
+          
+          </li>
+
+          
+          <router-outlet></router-outlet>
         
 
       </div>
-      <div>
-        <router-outlet></router-outlet>
+      <div class="content">
+          <a role="button" routerLink="/doctor/appointments/patients/checkups">
+            Appointments</a>
+        <hr>
+         <div class="card">
+           <div class="card-header">
+             <h4>Patient ID</h4>
+           </div>
+         </div>
+      
       </div>
         
 

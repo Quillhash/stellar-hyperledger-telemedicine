@@ -20,6 +20,8 @@ import { PatientsComponent } from './doctor/patients/patients.component';
 import { DocPaymentsComponent } from './doctor/doc-payments/doc-payments.component';
 
 import { ProfileComponent } from './doctor/profile/profile.component';
+import { AppointmentListComponent } from './doctor/appointments/appointment-list/appointment-list.component';
+
 
 
 
@@ -33,6 +35,9 @@ const appRoutes : Routes =[
         path:'appointments',component:AppointmentsComponent,children:[
           {
             path:':id',component:DocVideoComponent
+          },
+          {
+            path:'patients/checkups',component:AppointmentListComponent
           }
         ]
       },
@@ -74,7 +79,8 @@ const appRoutes : Routes =[
     AppointmentsComponent,
     PatientsComponent,
     ProfileComponent,
-    DocPaymentsComponent
+    DocPaymentsComponent,
+    AppointmentListComponent
 
   
   ],

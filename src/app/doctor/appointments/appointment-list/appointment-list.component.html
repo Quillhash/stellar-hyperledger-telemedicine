@@ -1,0 +1,51 @@
+<div>
+    <form  #f="ngForm" (ngSubmit)="downloadReport(f)" ngNativeValidate>
+        <div class="form-group">
+
+        
+      <label for="hospital">Hostpital name</label>
+      <input type="text" name="hospital" ngModel class="form-control" required/>
+      <label for="patientId">Patient Id</label>
+      <input type="text" name="patientId" ngModel class="form-control" required/>
+      <label for="patientAge">Age</label>
+      <input type="text" name="patientAge" ngModel class="form-control" required/>
+      <br>
+      <label for="patientSex">Sex</label>
+      <select ngModel name="patientSex">
+        <option> Male</option>
+        <option>Female</option>
+        <option>Others </option>
+      </select>
+      <br>
+      <br>
+      <label for="doctorName">Doctor Name</label>
+      <input type="text" name="doctorName" ngModel class="form-control input-lg" required/>
+      <label for="doctorSpec">Doctor Specialisation</label>
+      <input type="text" name="doctorSpec" ngModel class="form-control" required/>
+      <label for="patientDetails">Patient Details</label>
+      <textarea name="patientDetails" ngModel class="form-control" required></textarea>
+      <label for="treatmentDetails">Treatment Details</label>
+      <textarea name="treatmentDetails" ngModel class="form-control" required></textarea>
+      <label for="recommendations">Recommendations</label>
+      <textarea name="recommendations" ngModel class="form-control" required></textarea>
+      <hr>
+      <button type="submit" class="btn btn-primary btn-lg">Create Report</button>
+    </div>
+    </form>
+      
+<hr>
+
+
+ 
+ <form  #export="ngForm" (ngSubmit)="exportReport()" ngNativeValidate>
+  <input type="file" name="ipfs" id="ipfs" (change)="fileChangeEvent($event)" ngModel value="Choose Report"/>
+  <h3 *ngIf=" fileSelected != true && attempt > 0">Please select a file to upload</h3>
+  <h5 *ngIf="uploaded == true"><pre>SuccessFully uploaded  to :
+ {{url}}</pre></h5>
+  <h3 *ngIf="uploading == true">Uploading...</h3>
+  <button type="submit" name="ipfs" id="ipfs"  class="btn btn-primary btn-lg">Export report</button>
+  
+
+</form>
+   
+</div>
