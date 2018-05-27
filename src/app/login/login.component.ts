@@ -24,7 +24,7 @@ register(f:NgForm){
     userType : formData.userType,
     userEmail : formData.userEmail,
   }
-  this.http.post("http://localhost:4800/test",resBody)
+  this.http.post("http://localhost:4800/identity/register",resBody)
   .subscribe((result)=>{
     this.registering = false;
     this.registered =  true;

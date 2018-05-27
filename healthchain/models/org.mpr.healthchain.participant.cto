@@ -7,11 +7,13 @@ participant Patient identified by patientKey {
   o String patientKey //128 bit uuid
   o String[] authPractitioners
   o MedicalRecord[] records optional
+  o String publicKey
 
 }
 
 participant Practitioner identified by practitionerKey {
   o String practitionerKey //128 bit uuid
   o String[] patients
-  
+  o String publicKey
+  o String[] accessKeys
 }
