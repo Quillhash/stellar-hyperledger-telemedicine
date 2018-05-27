@@ -22,6 +22,7 @@ router.post('/patients',async ()=> {
         process.exit(1);
     }
 })
+
 router.post('/doctors',async ()=> {
     let businessNetworkConnection = new BusinessNetworkConnection();
 

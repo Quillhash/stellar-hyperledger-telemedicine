@@ -1,4 +1,5 @@
 import { Component, OnInit,Output,EventEmitter} from '@angular/core';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -7,20 +8,24 @@ import { Component, OnInit,Output,EventEmitter} from '@angular/core';
   styleUrls: ['./patient-navigation.component.css']
 })
 export class PatientNavigationComponent implements OnInit {
-  @Output() onNavSelected: EventEmitter<any> = new EventEmitter();
-
-  constructor() { }
+  
+  sidebarName:string;
+  constructor(private router:Router) { }
 
   ngOnInit() {
+    if(localStorage.getItem("accessToken").length >0){
+      this.sidebarName = localStorage.getItem("accessToken")
+    }
+    else{
+      this.sidebarName = '';
+    }
   }
 
-  loadPayment() {
-    this.onNavSelected.emit("payment")
+  logout(){
+    localStorage.clear();
 
-  }
-  loadCheckup(){
-    this.onNavSelected.emit("checkups")
-
+    this.router.navigate([''])
+    
   }
 
 }

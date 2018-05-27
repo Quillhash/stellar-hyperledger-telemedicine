@@ -10,7 +10,7 @@ var fs = require('fs');
 //for windows
 var Create = require('./../../node_modules/composer-cli/lib/cmds/card/lib/create.js')
 var express =  require('express');
-
+var adminCard = fs.readFileSync('/home/himanshu/healthchain/healthchain/admin@healthchain.card');
 var router = express.Router();
 //require req body fields:-
 ////userType is type of participant ,Patient | Practitioner
@@ -33,7 +33,7 @@ router.post('/register',async (req,res)=> {
         let participant = factory.newResource('org.mpr.healthchain.participant', 'Patient', req.body.participantId);
         participant.authPractitioners = [];
         participant.records= [];
-        participant.publicKey = req.body.publicKey;
+       
         await participantRegistry.add(participant);
         console.log("sucess patient");
            
@@ -46,8 +46,12 @@ router.post('/register',async (req,res)=> {
         console.log(`userID = ${result.userID}`);
         console.log(`userSecret = ${result.userSecret}`);
         var exp =  await adminConnection.exportCard('admin@healthchain');
+
         var bNetwork = exp.metadata.businessNetwork;
+        console.log(exp)
+        console.log("himanshu"+bNetwork)
         var connPro= exp.connectionProfile;
+        console.log(JSON.stringify(exp.connectionProfile));
         options.participantId = req.body.participantId;
         options.issuer = false;
         options.newUserId = result.userID;
@@ -72,6 +76,7 @@ router.post('/register',async (req,res)=> {
         var file = fs.readFileSync(fileName);
           
         console.log(file)
+        console.log(file.toString('utf8'))
         console.log(req.body.participantId);
         console.log(req.body.userType);
         console.log(req.body.userId);
@@ -104,7 +109,7 @@ router.post('/register',async (req,res)=> {
             let factory = businessNetworkConnection.getBusinessNetwork().getFactory();
             let participant = factory.newResource('org.mpr.healthchain.participant', 'Practitioner', req.body.participantId);
             participant.patients = [];
-            participant.publicKey = req.body.publicKey;
+            participant.publicKey = '90493039409';
             participant.accessKeys = [];
             
             await participantRegistry.add(participant);
@@ -124,7 +129,7 @@ router.post('/register',async (req,res)=> {
         options.participantId = req.body.participantId;
         options.issuer = false;
         options.newUserId = result.userID;
-        options.card = 'admin@healthchain'
+        options.card = adminCard
         let metadata = {
             userName : result.userID,
             version: 1,

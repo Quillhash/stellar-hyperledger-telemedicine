@@ -4,17 +4,26 @@ var router = express.Router();
 var fs = require('fs');
 //for linux
 
-//var card = fs.readFileSync('/home/himanshu/healthchain/healthchain/admin@healthchain.card');
+
 
 
 
 router.post('/login',(req,res)=>{
-    
+    let card = req.files.card.data;
+   
     myNetwork.importCardFromNetwork(card).then((cardName)=>{
+        if (!req.files)
+        {
+            return res.status(400).send('No files were uploaded.');
+        }
+       
+       console.log('adminCard' + card);
+       
+        
         if(cardName){
             res.json({
                 accessToken : cardName,
-                cardName: cardName
+                cardname: cardName
             });
         }
         else {
@@ -26,6 +35,7 @@ router.post('/login',(req,res)=>{
     })
 
 
+   
 
 })
 

@@ -6,10 +6,17 @@ rule NetworkControlPermission {
   resource: "org.hyperledger.composer.system.*"
   action: ALLOW
 }
-rule ParticipantNetworkControlPermission {
+rule PatientNetworkControlPermission {
   description: "allow participant read access to system resources"
   participant: "org.mpr.healthchain.participant.Patient"
-  operation: READ
+  operation: ALL
+  resource: "org.hyperledger.composer.system.Network#healthchain@0.0.3"
+  action: ALLOW
+}
+rule DoctorNetworkControlPermission {
+  description: "allow participant read access to system resources"
+  participant: "org.mpr.healthchain.participant.Patient"
+  operation: ALL
   resource: "org.hyperledger.composer.system.Network#healthchain@0.0.3"
   action: ALLOW
 }

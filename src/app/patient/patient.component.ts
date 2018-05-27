@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import * as $ from 'jquery';
 
 
 @Component({
@@ -14,7 +14,8 @@ export class PatientComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+
+     $('.modal-backdrop').remove();
 
   }
 

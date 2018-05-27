@@ -3,7 +3,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var ipfs =  require('./modules/ipf/upload');
 
-
+var addAssets = require('./modules/participants/addAssets');
 var fileUpload = require('express-fileupload');
 var identity = require('./modules/auth/register')
 var auth = require('./modules/auth/authenticate');
@@ -24,7 +24,7 @@ app.use('/auth',auth);
 app.use('/identity',identity);
 app.use('/get',getParticipant);
 
-
+app.use('/assets',addAssets);
 app.get('/', (req,res)=>{
     res.send('hello world');
 })

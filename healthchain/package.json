@@ -1,6 +1,6 @@
 {
   "name": "healthchain",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A health data sharing network",
   "scripts": {
     "test": "mocha --recursive"

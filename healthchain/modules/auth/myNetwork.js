@@ -47,7 +47,7 @@ class MyNetwork {
                         }
                     })
                     .then((businessDefinition)=>{
-                        console.log(businessDefinition)
+                      
                         if(!businessDefinition){
                             console.log("not defined");
                             return null;

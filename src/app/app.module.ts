@@ -22,6 +22,8 @@ import { DocPaymentsComponent } from './doctor/doc-payments/doc-payments.compone
 import { ProfileComponent } from './doctor/profile/profile.component';
 import { AppointmentListComponent } from './doctor/appointments/appointment-list/appointment-list.component';
 import { CryptoService } from './service/crypto.service';
+import { PatientProfileComponent } from './patient/patient-profile/patient-profile.component';
+import { DoctorsComponent } from './patient/doctors/doctors.component';
 
 
 
@@ -61,7 +63,24 @@ const appRoutes : Routes =[
     ]
   },
   {
-    path:'patient',component:PatientComponent
+    path:'patient',component:PatientComponent,children:[
+      {
+        path:'profile',component:PatientProfileComponent
+      },
+      {
+        path:'doctors',component:DoctorsComponent
+      },
+      
+      {
+        path:'checkups',component:CheckupsComponent
+      },
+      
+      {
+        path:'payment',component:PaymentComponent
+      }
+
+      
+    ]
   }
 ]
 
@@ -82,7 +101,9 @@ const appRoutes : Routes =[
     PatientsComponent,
     ProfileComponent,
     DocPaymentsComponent,
-    AppointmentListComponent
+    AppointmentListComponent,
+    PatientProfileComponent,
+    DoctorsComponent
 
   
   ],

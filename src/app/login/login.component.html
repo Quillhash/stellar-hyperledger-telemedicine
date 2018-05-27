@@ -11,8 +11,8 @@
     
       <div class="content">
         
-        <a type="button"  class="btn btn-primary btn-lg patient"  data-target="#myLoginModal" data-toggle="modal">PATIENT</a>
-        <a type="button"  class="btn btn-primary btn-lg doctor"  data-target="#myLoginModal" data-toggle="modal">DOCTOR</a>
+        <a type="button"  class="btn btn-primary btn-lg patient"  data-target="#PatientLoginModal" data-toggle="modal">PATIENT</a>
+        <a type="button"  class="btn btn-primary btn-lg doctor"  data-target="#DoctorLoginModal" data-toggle="modal">DOCTOR</a>
        
       </div>
   </div>
@@ -64,7 +64,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="myLoginModal" role="dialog">
+<div class="modal fade" id="PatientLoginModal" role="dialog">
   <div class="modal-dialog">
   
     <!-- Modal content-->
@@ -74,14 +74,36 @@
         <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
       </div>
       <div class="modal-body" style="padding:40px 50px;">
-        <form role="form" #lg = "ngForm" ngNativeValidate (ngSubmit) = "login(lg)" >
-            <input type = "file" (change) ="fileChangeEvent(e)" ngModel name="cardFile" value="Upload Access Card"> 
-            <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Login</button>
+        <form role="form" #lgPt = "ngForm" ngNativeValidate (ngSubmit) = "loginPatient(lg)" >
+            <input type = "file" (change) ="fileChangeEvent($event)" ngModel name="cardFile" value="Upload Access Card"> 
+            <button type="submit"  id="logButton" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Login</button>
         </form>
       </div>
       <div class="modal-footer">
-        <h3 *ngIf ="registering == true ">Registering</h3>
-        <h3 *ngIf = "registered == true ">Registered Successfully and your access card has been sent to  {{frm.form.value.userEmail}}</h3>
+       
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+<div class="modal fade" id="DoctorLoginModal"  role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="padding:35px 50px;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
+      </div>
+      <div class="modal-body" style="padding:40px 50px;">
+        <form role="form" #lgDr = "ngForm" ngNativeValidate (ngSubmit) = "loginDoctor(lg)" >
+            <input type = "file" (change) ="fileChangeEvent($event)" ngModel name="cardFile" value="Upload Access Card"> 
+            <button type="submit"  id="logButton" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Login</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+       
         
       </div>
     </div>
