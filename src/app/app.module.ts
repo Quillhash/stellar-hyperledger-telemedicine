@@ -21,6 +21,7 @@ import { DocPaymentsComponent } from './doctor/doc-payments/doc-payments.compone
 
 import { ProfileComponent } from './doctor/profile/profile.component';
 import { AppointmentListComponent } from './doctor/appointments/appointment-list/appointment-list.component';
+import { CryptoService } from './service/crypto.service';
 
 
 
@@ -91,7 +92,7 @@ const appRoutes : Routes =[
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [PaymentService],
+  providers: [PaymentService,CryptoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
