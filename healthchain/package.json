@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "composer-admin": "^0.19.5",
+    "composer-cli": "^0.19.6",
     "composer-client": "^0.19.5",
     "composer-common": "^0.19.5",
     "composer-connector-embedded": "latest",

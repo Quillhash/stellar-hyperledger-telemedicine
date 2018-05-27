@@ -7,7 +7,7 @@ rule NetworkControlPermission {
   action: ALLOW
 }
 rule ParticipantNetworkControlPermission {
-  description: "allow network admin all access to system resources"
+  description: "allow participant read access to system resources"
   participant: "org.mpr.healthchain.participant.Patient"
   operation: READ
   resource: "org.hyperledger.composer.system.Network#healthchain@0.0.3"

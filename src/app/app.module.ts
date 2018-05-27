@@ -33,11 +33,12 @@ const appRoutes : Routes =[
     path:'doctor',component:DoctorComponent,children:[
       {
         path:'appointments',component:AppointmentsComponent,children:[
-          {
-            path:':id',component:DocVideoComponent
-          },
+          
           {
             path:'patients/checkups',component:AppointmentListComponent
+          },
+          {
+            path:'patients/checkups:id',component:DocVideoComponent
           }
         ]
       },

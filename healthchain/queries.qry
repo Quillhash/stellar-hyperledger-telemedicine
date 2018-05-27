@@ -1,0 +1,6 @@
+query AllPatients {
+    description:"Returns all patients"
+    statement:
+       SELECT org.mpr.healthchain.participant.Patient
+       
+}

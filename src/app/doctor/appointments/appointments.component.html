@@ -1,31 +1,55 @@
 <div class="row">
-
-    <div class="video">
-        
-        <li>
-          <a role="button" routerLink="/doctor/appointments/init" (click)="goOnline()">
-            Go online</a>
+   
+      <div class="col-md-6">
+        <br>
+        <h1>Appointments</h1>
+          <div class="card">
+              <div class="card-header">
+                <h4>Patient ID : 0092</h4>
+              </div>
+              <div class="card-body">
+               <h4> Appointment time: 24-may-2018 9:00 pm </h4>
+               <h3>Escrow Id :GSJSGSKSOUJ </h3>
+             </div>
+     
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-header">
+                  <h4>Patient ID : 0087</h4>
+                </div>
+                <div class="card-body">
+                 <h4>Appointment time: 24-may-2018 10:00 pm </h4>
+                 <h3>Escrow Id : GSJDKDHDKDKK</h3>
+               </div>
+    
+              </div>
+              <br>
+              <div class="card">
+                  <div class="card-header">
+                    <h4>Patient ID :0074</h4>
+                  </div>
+                  <div class="card-body">
+                   <h4>Appointment time: 24-may-2018 11:00 pm </h4>
+                   <h3>Escrow Id : GFJDKDLDUDHDK</h3>
+                 </div>
+       
+                </div>
+         
+       </div>
            
-            
-          
-          </li>
-
-          
-          <router-outlet></router-outlet>
-        
-
-      </div>
-      <div class="content">
-          <a role="button" routerLink="/doctor/appointments/patients/checkups">
-            Appointments</a>
+      <br>
+      <div class="col-md-5 report">
+        <br>
+       
+          <a role="button" routerLink="/doctor/appointments/patients/checkups" class="btn btn-primary btn-lg">Report Generation</a>
         <hr>
-         <div class="card">
-           <div class="card-header">
-             <h4>Patient ID</h4>
-           </div>
-         </div>
-      
-      </div>
-        
+
+        <a role="button" routerLink="/doctor/appointments/patients/checkups/init" (click)="goOnline()">
+          Go online</a>
+       <router-outlet></router-outlet>
+    
+         
+  </div>
 
 </div>

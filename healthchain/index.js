@@ -2,18 +2,12 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var ipfs =  require('./modules/ipf/upload');
-
-
+var test = require('./modules/auth/fRegister')
 
 var fileUpload = require('express-fileupload');
-<<<<<<< HEAD
+var identity = require('./modules/auth/register')
 var auth = require('./modules/auth/authenticate');
-var participant =  require('./modules/participants/addParticipant')
-=======
-//var auth = require('./modules/auth/authenticate');
-
-
->>>>>>> f35f4eb3652f9268bce0cc5780ce5114e7c39568
+var getParticipant =  require('./modules/participants/queryParticipant')
 var bodyParser = require('body-parser');
 var cors = require('cors');
 app.use(function (req, res, next) {
@@ -26,18 +20,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(fileUpload());
 app.use(cors());
-
-<<<<<<< HEAD
-  
 app.use('/auth',auth);
-app.use('/participant',participant)
-=======
-app.use('/ipfs',ipfs);
-//app.use('/auth',auth);
+app.use('/identity',identity);
+app.use('/get',getParticipant);
+app.use('/test',test);
 
-  
-
->>>>>>> f35f4eb3652f9268bce0cc5780ce5114e7c39568
 app.get('/', (req,res)=>{
     res.send('hello world');
 })
