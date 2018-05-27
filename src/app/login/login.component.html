@@ -1,6 +1,8 @@
 <div class="wrapper">
   <div class="inner-wrapper">
-      <a type="button"  routerLink="/doctor" class="btn btn-primary btn-lg register">Register</a>
+      <a type="button"  routerLink="/doctor" class="btn btn-primary btn-lg register" data-target="#myModal" data-toggle="modal">Register</a>
+
+      
       <hr>
      
       <div class="title">
@@ -14,5 +16,50 @@
        
       </div>
   </div>
+
   
+  
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="padding:35px 50px;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4><span class="glyphicon glyphicon-lock"></span>Register</h4>
+      </div>
+      <div class="modal-body" style="padding:40px 50px;">
+        <form role="form" #f = "ngForm" ngNativeValidate (ngSubmit) = "register(f)" >
+          <div class="form-group">
+            <label for="userEmail"><span class="glyphicon glyphicon-user"></span>Email</label>
+            <input type="text" class="form-control" ngModel name="userEmail" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="participantId"><span class="glyphicon glyphicon-eye-open"></span>Aadhar number</label>
+            <input type="text" class="form-control" ngModel name="participantId" placeholder="Enter aadhar number">
+          </div>
+         
+          <div class="form-group">
+            <label for="userId"><span class="glyphicon glyphicon-eye-open"></span>Identitification name</label>
+            <input type="text" class="form-control" ngModel name="userId" placeholder="Enter any identification name">
+          </div>
+          <select  ngModel name="userType" class="form-control">
+            <option>Doctor</option>
+            <option>Patient</option>
+          </select>
+          <hr>
+          
+            <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Register</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <h3 *ngIf ="registering == true ">Registering</h3>
+        <h3 *ngIf = "registered == true ">Registered Successfully and your access card has been sent to  {{frm.form.value.userEmail}}</h3>
+        
+      </div>
+    </div>
+    
+  </div>
 </div>

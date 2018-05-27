@@ -2,8 +2,11 @@ var express =  require('express');
 var myNetwork = require('./myNetwork');
 var router = express.Router();
 var fs = require('fs');
+//for linux
 
-var card = fs.readFileSync('/home/himanshu/healthchain/healthchain/admin@healthchain.card');
+//var card = fs.readFileSync('/home/himanshu/healthchain/healthchain/admin@healthchain.card');
+
+
 
 router.post('/login',(req,res)=>{
     

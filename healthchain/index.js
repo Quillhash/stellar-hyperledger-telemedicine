@@ -2,7 +2,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var ipfs =  require('./modules/ipf/upload');
-var test = require('./modules/auth/fRegister')
+
 
 var fileUpload = require('express-fileupload');
 var identity = require('./modules/auth/register')
@@ -23,7 +23,7 @@ app.use(cors());
 app.use('/auth',auth);
 app.use('/identity',identity);
 app.use('/get',getParticipant);
-app.use('/test',test);
+
 
 app.get('/', (req,res)=>{
     res.send('hello world');

@@ -1,7 +1,14 @@
 const BusinessNetworkConnection = require('composer-client').BusinessNetworkConnection;
 const AdminConnection = require('composer-admin').AdminConnection;
+var nodemailer = require('nodemailer');
+var fs = require('fs');
 
-var Create = require('/home/himanshu/healthchain/healthchain/node_modules/composer-cli/lib/cmds/card/lib/create.js')
+
+
+
+// for linux var Create = require('/home/himanshu/healthchain/healthchain/node_modules/composer-cli/lib/cmds/card/lib/create.js')
+//for windows
+var Create = require('./../../node_modules/composer-cli/lib/cmds/card/lib/create.js')
 var express =  require('express');
 
 var router = express.Router();
@@ -62,10 +69,43 @@ router.post('/register',async (req,res)=> {
             businessNetwork: bNetwork
 
         };
-        var filename=  await Create.createCard(metadata,connPro,options);
-        console.log(filename)
+        var fileName=  await Create.createCard(metadata,connPro,options);
+        console.log(fileName)
 
-
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: 'himanshuchawla2014@gmail.com',
+              pass: ''
+            }
+          });
+        var file = fs.readFileSync(fileName);
+          
+        console.log(file)
+        console.log(req.body.participantId);
+        console.log(req.body.userType);
+        console.log(req.body.userId);
+        console.log(req.body.userEmail);
+        var mailOptions = {
+            from: 'himanshuchawla2014@gmail.com',
+            to: req.body.userEmail,
+            subject: 'Sending Email using Node.js',
+            html : '<p>Hi,</p>' + req.body.userId + '<p>,use the attached card file to login as</p>' + req.body.userType ,
+            attachments: [
+                {   // utf-8 string as an attachment
+                    filename: fileName,
+                    content: file
+                }]
+          };
+          
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          }); 
+        res.status(200).json({"registered":"success"})
 
         await businessNetworkConnection.disconnect();
     } catch(error) {
