@@ -23,7 +23,7 @@ app.use(cors());
 app.use('/auth',auth);
 app.use('/identity',identity);
 app.use('/get',getParticipant);
-
+app.use('/ipfs',ipfs);
 app.use('/assets',addAssets);
 app.get('/', (req,res)=>{
     res.send('hello world');

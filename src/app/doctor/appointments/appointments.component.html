@@ -42,14 +42,19 @@
       <div class="col-md-5 report">
         <br>
        
-          <a role="button" routerLink="/doctor/appointments/patients/checkups" class="btn btn-primary btn-lg">Report Generation</a>
+          <a role="button" (click)="generateReport()" class="btn btn-primary btn-lg">Report Generation</a>
         <hr>
 
-        <a role="button" routerLink="/doctor/appointments/patients/checkups/init" (click)="goOnline()">
+        <a role="button" routerLink="/doctor/appointments/patients/checkups/video/init">
           Go online</a>
+          <a role="button" routerLink="/doctor/appointments/patients/checkups/video/connect">
+            Connect</a>
+
        <router-outlet></router-outlet>
     
+       <app-appointment-list *ngIf="report == true"></app-appointment-list>
          
   </div>
+
 
 </div>

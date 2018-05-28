@@ -10,7 +10,7 @@ var fs = require('fs');
 //for windows
 var Create = require('./../../node_modules/composer-cli/lib/cmds/card/lib/create.js')
 var express =  require('express');
-var adminCard = fs.readFileSync('/home/himanshu/healthchain/healthchain/admin@healthchain.card');
+//var adminCard = fs.readFileSync('/home/himanshu/healthchain/healthchain/admin@healthchain.card');
 var router = express.Router();
 //require req body fields:-
 ////userType is type of participant ,Patient | Practitioner

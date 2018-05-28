@@ -1,5 +1,6 @@
 <input type="text" [(ngModel)]="targetPeer"/>
-<button (click)="connect()">connect</button>
+<button *ngIf = "connection == true" (click)="connect()">connect</button>
+<button *ngIf = "accepting == true" (click)="accept()">accept</button>
 
 
 <button (click)="message()">message</button>

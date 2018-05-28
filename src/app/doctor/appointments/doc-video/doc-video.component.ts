@@ -14,6 +14,8 @@ export class DocVideoComponent implements OnInit ,OnDestroy{
   @ViewChild('myVideo') myVideo:any;
   title = 'app works!';
   targetPeer:any;
+  connection:boolean = false;
+  accepting:boolean = false;
   peer:any;
   outputStream:any;
   disconnected:boolean=true;
@@ -42,7 +44,15 @@ export class DocVideoComponent implements OnInit ,OnDestroy{
   
     peerx.on('signal',function(data){
       console.log(JSON.stringify(data))
-      socket.emit('offer',data)
+      if(data.type  == "offer"){
+        localStorage.setItem("offer",JSON.stringify(data));
+      }
+      else if(data.type == "answer"){
+        localStorage.setItem("answer",JSON.stringify(data));
+      }
+     // socket.emit('offer',data)
+
+    
   
     })
     peerx.on('data',function(data){
@@ -64,15 +74,35 @@ export class DocVideoComponent implements OnInit ,OnDestroy{
    
    setTimeout(()=>{
      this.peer = peerx;
+     if(localStorage.getItem("offer").length > 0){
+     this.connection = true;
+     }
+     if(localStorage.getItem("answer").length > 0){
+     this.accepting = true;
+     }
+     
    },5000) 
+   setInterval(()=>{
+   
+    if(localStorage.getItem("offer").length > 0){
+    this.connection = true;
+    }
+    if(localStorage.getItem("answer").length > 0){
+    this.accepting = true;
+    }
+    
+  },3000) 
   }
   
   connect(){
-  
-    this.peer.signal(JSON.parse(this.targetPeer));
+    
+    this.peer.signal(localStorage.getItem("offer"));
     
   
   
+  }
+  accept(){
+    this.peer.signal(localStorage.getItem("answer"));
   }
   disconnect(){
     if(this.disconnected != true){
@@ -91,7 +121,10 @@ export class DocVideoComponent implements OnInit ,OnDestroy{
   }
   ngOnDestroy(){
     if(this.disconnectedBeforeDestroy == true){
-    
+      this.connection = false;
+      this.accepting =  false;
+      localStorage.removeItem("answer");
+      localStorage.removeItem("offer");
       this.outputStream.getTracks()[1].stop();
       this.outputStream.getTracks()[0].stop();
     }

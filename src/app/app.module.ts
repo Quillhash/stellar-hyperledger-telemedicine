@@ -41,7 +41,7 @@ const appRoutes : Routes =[
             path:'patients/checkups',component:AppointmentListComponent
           },
           {
-            path:'patients/checkups:id',component:DocVideoComponent
+            path:'patients/checkups/video/:id',component:DocVideoComponent
           }
         ]
       },
